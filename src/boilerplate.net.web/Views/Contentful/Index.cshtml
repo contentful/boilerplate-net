@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Contentful example";
+}
+@model boilerplate.net.web.Models.ContentfulExampleModel
+@using Newtonsoft.Json;
+@using Newtonsoft.Json.Linq;
+
+<h1>This is your Contentful Content!</h1>
+
+<h2>Your space</h2>
+
+<div>
+    <p><strong>SpaceName:</strong> @Model.Space.Name</p>
+    <p><strong>Space id:</strong> @Model.Space.SystemProperties.Id</p>
+    <p>
+        <strong>Configured locales:</strong>
+        <ul>
+            @foreach (var locale in Model.Space.Locales)
+            {
+                <li>
+                    @locale.Name
+                </li>
+            }
+        </ul>
+    </p>
+</div>
+
+<h2>Your entries:</h2>
+
+<div>
+    @foreach (var entry in Model.Entries)
+    {
+        <p><strong>Entry id:</strong> @entry.SystemProperties.Id</p>
+
+        <p><strong>Created at:</strong> @entry.SystemProperties.CreatedAt</p>
+
+        <p>
+            <strong>Fields:</strong> <pre>@Html.Raw(JsonConvert.SerializeObject(entry.Fields, Formatting.Indented))</pre>
+        </p>
+        <hr />
+    }
+
+    @if (!Model.Entries.Any())
+    {
+        <p>You have no entries, you should create some!</p>
+    }
+</div>
+
+<h2>Your assets</h2>
+
+<div>
+    @foreach (var asset in Model.Assets)
+    {
+        <p><strong>Asset title:</strong> @asset.Title</p>
+        <p><strong>Asset description:</strong> @asset.Description</p>
+        <p><strong>Asset id:</strong> @asset.SystemProperties.Id</p>
+        
+        @if (asset.File.Details.Image != null)
+        {
+            <span class="thumbnail">
+                <contentful-image url="@asset.File.Url" width="200" height="200" resize-behaviour="Pad"></contentful-image>
+            </span>
+        }
+        else
+        {
+            <a href="@asset.File.Url">@asset.Title</a>
+        }
+
+        <hr />
+    }
+</div>
