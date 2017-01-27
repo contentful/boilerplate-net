@@ -55,7 +55,7 @@ namespace boilerplate.net.web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Contentful}/{action=Index}/{id?}");
             });
         }
     }

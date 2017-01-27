@@ -1,8 +1,9 @@
 ﻿using boilerplate.net.web.Models;
 using Contentful.Core;
+using Contentful.Core.Configuration;
 using Contentful.Core.Models;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +14,25 @@ namespace boilerplate.net.web.Controllers
     public class ContentfulController : Controller
     {
         private readonly IContentfulClient _client;
+        private bool appsettingsEmpty = false;
 
-        public ContentfulController(IContentfulClient client)
+        public ContentfulController(IContentfulClient client, IOptions<ContentfulOptions> contentfulOptions)
         {
             _client = client;
+
+            if(string.IsNullOrEmpty(contentfulOptions.Value.SpaceId) || string.IsNullOrEmpty(contentfulOptions.Value.DeliveryApiKey))
+            {
+                appsettingsEmpty = true;
+            }
         }
 
         public async Task<IActionResult> Index()
         {
+            if (appsettingsEmpty)
+            {
+                return View("NoAppSettings");
+            }
+
             var space = await _client.GetSpaceAsync();
             var entries = await _client.GetEntriesAsync<Entry<dynamic>>();
             var assets = await _client.GetAssetsAsync();
