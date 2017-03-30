@@ -42,7 +42,6 @@ namespace boilerplate.net.web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
             }
             else
             {
