@@ -6,7 +6,7 @@
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="contentful.aspnetcore" Version="0.3.10-beta" />
+    <PackageReference Include="contentful.aspnetcore" Version="0.3.13-beta" />
     <PackageReference Include="Microsoft.NETCore.App" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
