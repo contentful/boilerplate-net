@@ -10,7 +10,7 @@ namespace boilerplate.net.web.Models
     {
         public Space Space { get; set; }
 
-        public List<Entry<dynamic>> Entries { get; set; }
+        public List<dynamic> Entries { get; set; }
 
         public List<Asset> Assets { get; set; }
     }

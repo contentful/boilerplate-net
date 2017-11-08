@@ -33,9 +33,9 @@ namespace boilerplate.net.web.Controllers
                 return View("NoAppSettings");
             }
 
-            var space = await _client.GetSpaceAsync();
-            var entries = await _client.GetEntriesAsync<Entry<dynamic>>();
-            var assets = await _client.GetAssetsAsync();
+            var space = await _client.GetSpace();
+            var entries = await _client.GetEntries<dynamic>();
+            var assets = await _client.GetAssets();
 
             var contentfulExampleModel = new ContentfulExampleModel()
             {

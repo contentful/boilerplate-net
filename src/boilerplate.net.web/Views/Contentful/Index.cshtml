@@ -30,12 +30,12 @@
 <div>
     @foreach (var entry in Model.Entries)
     {
-        <p><strong>Entry id:</strong> @entry.SystemProperties.Id</p>
+        <p><strong>Entry id:</strong> @entry.sys.id</p>
 
-        <p><strong>Created at:</strong> @entry.SystemProperties.CreatedAt</p>
+        <p><strong>Created at:</strong> @entry.sys.createdAt</p>
 
         <p>
-            <strong>Fields:</strong> <pre>@Html.Raw(JsonConvert.SerializeObject(entry.Fields, Formatting.Indented))</pre>
+            <strong>Json representation:</strong> <pre>@Html.Raw(JsonConvert.SerializeObject(entry, Formatting.Indented))</pre>
         </p>
         <hr />
     }
