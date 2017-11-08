@@ -13,4 +13,4 @@ This solution currently contains an ASP.NET Core project to help you get started
 
 ## Requirements
 
-This solution is built using version 1.0.1 of the dotnet SDK.
+This solution is built using version 2.0.0 of the dotnet SDK.
